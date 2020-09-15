@@ -62,7 +62,7 @@ void insertPos()
     {
         insertBeg();
     }
-    else                                                  //ISKI GAND MARUGA
+    else                                                 
     {
         node *temp=new node;
         cin>>temp->data;
