@@ -1,0 +1,39 @@
+//       MORRIS TRAVERSAL   (use morris traversal video of love babbar)
+
+/*
+It is a inplace algorithm that uses threaded pointers and no extra space to traverse the BST
+TC of morris traversal is O(n)
+SC - O(1) ignoring the constant spaces of variables.
+*/
+
+//The logic says.
+
+Node * curr = root;
+while(curr!= NULL)
+{
+    if(curr->left == NULL)
+    {
+        print curr;
+        curr = curr->right;    
+    }
+    else
+    {
+        // now we would find the inorder predecessor of curr
+        Node * pred  = curr->left;
+        while(pred->right != NULL)
+            pred = pred->right; //now we have the predecessor of curr;
+        //now we would create the link to curr if right of pred is NULL 
+        //we would destroy the link to curr if the right of pred is non null ie the already existing link
+        if(pred->right == NULL)
+        {
+            pred->right = curr;
+            curr= curr->left;
+        }
+        else
+        {
+            pred->right= NULL;
+            print curr;
+            curr = curr->right;
+        }
+    }
+}
